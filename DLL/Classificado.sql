@@ -1,0 +1,41 @@
+-- DDL
+-- CREATE
+-- ALTER
+-- DROP
+
+CREATE DATABASE Classificado;
+
+USE Classificado;
+
+CREATE TABLE usuarios (
+	Id INT NOT NULL PRIMARY KEY,
+	Nome VARCHAR(50) NOT NULL,
+	Email VARCHAR(50) NOT NULL,
+	Senha VARCHAR(100) NOT NULL,
+	Foto VARCHAR(255) NULL,
+);
+
+CREATE TABLE vendedor (
+	Id INT NOT NULL PRIMARY KEY,
+	Nome VARCHAR(50) NOT NULL,
+	Email VARCHAR(50) NOT NULL,
+	Senha VARCHAR(100) NOT NULL,
+	Foto VARCHAR(255) NULL,
+);
+CREATE TABLE olx  (
+	
+	Titulo VARCHAR(255) NOT NULL,
+	Descricao VARCHAR(255) NOT NULL,
+	Foto VARCHAR(255) NULL,
+	vendedor1 INT NOT NULL,
+	user1 INT NOT NULL,
+	Id_compra INT NOT NULL PRIMARY KEY IDENTITY,
+	comprouD int NOT NULL,
+	RecebeuD int NULL,
+	FOREIGN KEY (comprouD) REFERENCES usuarios (Id),
+	FOREIGN KEY (RecebeuD) REFERENCES vendedor(Id),
+);
+
+ALTER TABLE olx DROP COLUMN comprouD;
+
+

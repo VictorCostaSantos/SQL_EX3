@@ -1,0 +1,44 @@
+-- DDL
+-- CREATE
+-- ALTER
+-- DROP
+
+CREATE DATABASE MarketPlace;
+
+USE MarketPlace;
+
+CREATE TABLE usuarios (
+	Id int NOT NULL PRIMARY KEY,
+	Nome VARCHAR(50) NOT NULL,
+	Email VARCHAR(50) NOT NULL,
+	Senha VARCHAR(100) NOT NULL,
+	Foto VARCHAR(255) NULL,
+);
+
+CREATE TABLE vendedor (
+	Id INT NOT NULL PRIMARY KEY,
+	Nome VARCHAR(50) NOT NULL,
+	Email VARCHAR(50) NOT NULL,
+	Senha VARCHAR(100) NOT NULL,
+	Foto VARCHAR(255) NULL,
+);
+CREATE TABLE magalu  (
+	
+	Titulo VARCHAR(255) NOT NULL,
+	Descricao VARCHAR(255) NOT NULL,
+	Foto VARCHAR(255) NULL,
+	vendedor1 INT NOT NULL,
+	user1 INT NOT NULL,
+	FOREIGN KEY (user1) REFERENCES usuarios(Id),
+	FOREIGN KEY (vendedor1) REFERENCES vendedor(Id),
+);
+
+CREATE TABLE compras (
+	Id_compra INT NOT NULL PRIMARY KEY IDENTITY,
+	comprouD int NOT NULL,
+	RecebeuD int NULL,
+	FOREIGN KEY (comprouD) REFERENCES usuarios (Id),
+	FOREIGN KEY (RecebeuD) REFERENCES vendedor(Id),
+);
+
+
